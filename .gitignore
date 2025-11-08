@@ -16,3 +16,4 @@ gatling/resources/*
 .idea
 !/shards.json
 shards.json
+media/
