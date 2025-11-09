@@ -13,7 +13,6 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     environment:
-      - ALLOWED_HOSTS=localhost,127.0.0.1,0.0.0.0
       - DB_HOST=${DB_HOST:-host.docker.internal}
     restart: unless-stopped
 
