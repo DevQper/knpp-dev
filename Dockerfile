@@ -25,7 +25,7 @@ COPY . /app/
 RUN mkdir -p /app/media
 
 # Expose port
-EXPOSE 8000
+EXPOSE 9005
 
 # Run entrypoint script
 RUN chmod +x /app/docker-entrypoint.sh
