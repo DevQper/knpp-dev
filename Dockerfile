@@ -28,7 +28,6 @@ RUN mkdir -p /app/media
 EXPOSE 8000
 
 # Run entrypoint script
-COPY docker-entrypoint.sh /app/
 RUN chmod +x /app/docker-entrypoint.sh
-ENTRYPOINT ["/app/docker-entrypoint.sh"]
+ENTRYPOINT ["/bin/bash", "/app/docker-entrypoint.sh"]
 

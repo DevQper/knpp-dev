@@ -33,5 +33,4 @@ htmlcov/
 docker-compose.yml
 Dockerfile
 .dockerignore
-docker-entrypoint.sh
 
