@@ -13,9 +13,9 @@ class ProposalSerializer(serializers.ModelSerializer):
 
 
 class ProposalCreateUpdateSerializer(serializers.ModelSerializer):
-    file = serializers.FileField(use_url=True)
+    file = serializers.FileField(use_url=True, required=False)
     
     class Meta:
         model = Proposal
-        fields = ['proposed_by', 'phone_number', 'email', 'file', 'title', 'description']
+        fields = ['proposed_by', 'phone_number', 'email', 'file', 'title', 'description', 'type']
 
