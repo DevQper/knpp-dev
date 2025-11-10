@@ -3,6 +3,7 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.pagination import PageNumberPagination
 from .models import Project, ProjectMedia
 from .serializers import ProjectSerializer, ProjectCreateUpdateSerializer, ProjectMediaSerializer
+from apps.accounts.permissions import IsAdminRoleOrReadOnly
 
 
 class ProjectPagination(PageNumberPagination):
@@ -14,6 +15,7 @@ class ProjectPagination(PageNumberPagination):
 class ProjectViewSet(viewsets.ModelViewSet):
     queryset = Project.objects.all()
     pagination_class = ProjectPagination
+    permission_classes = [IsAdminRoleOrReadOnly]
     
     def get_serializer_class(self):
         if self.action in ['create', 'update', 'partial_update']:
@@ -29,6 +31,7 @@ class ProjectMediaViewSet(viewsets.ModelViewSet):
     queryset = ProjectMedia.objects.all()
     serializer_class = ProjectMediaSerializer
     parser_classes = [MultiPartParser, FormParser]
+    permission_classes = [IsAdminRoleOrReadOnly]
     
     def get_queryset(self):
         queryset = ProjectMedia.objects.all()

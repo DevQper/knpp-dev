@@ -27,6 +27,7 @@ urlpatterns = [
     path('api/proposals/', include('apps.propolsals.urls')),
     path('api/projects/', include('apps.projects.urls')),
     path('api/contests/', include('apps.contests.urls')),
+    path('api/auth/', include('apps.accounts.urls')),
     # Swagger/OpenAPI documentation
     path('api/schema/', SpectacularAPIView.as_view(permission_classes=[AllowAny]), name='schema'),
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema', permission_classes=[AllowAny]), name='swagger-ui'),

@@ -2,10 +2,12 @@ from rest_framework import viewsets
 from rest_framework.parsers import MultiPartParser, FormParser
 from .models import News, NewsMedia
 from .serializers import NewsSerializer, NewsCreateUpdateSerializer, NewsMediaSerializer
+from apps.accounts.permissions import IsAdminRoleOrReadOnly
 
 
 class NewsViewSet(viewsets.ModelViewSet):
     queryset = News.objects.all()
+    permission_classes = [IsAdminRoleOrReadOnly]
     
     def get_serializer_class(self):
         if self.action in ['create', 'update', 'partial_update']:
@@ -21,6 +23,7 @@ class NewsMediaViewSet(viewsets.ModelViewSet):
     queryset = NewsMedia.objects.all()
     serializer_class = NewsMediaSerializer
     parser_classes = [MultiPartParser, FormParser]
+    permission_classes = [IsAdminRoleOrReadOnly]
     
     def get_queryset(self):
         queryset = NewsMedia.objects.all()
