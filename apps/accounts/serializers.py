@@ -52,6 +52,10 @@ class EmailAuthTokenSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField(label=_("Password"), style={'input_type': 'password'}, trim_whitespace=False)
 
+    def validate_email(self, value):
+        """Normalize email to lowercase for login"""
+        return value.lower() if value else value
+
     def validate(self, attrs):
         email = attrs.get('email')
         password = attrs.get('password')
