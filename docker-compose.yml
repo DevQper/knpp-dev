@@ -10,8 +10,10 @@ services:
       - "9005:9005"
     env_file:
       - .env
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     environment:
-      - DB_HOST=109.248.32.194
+      - DB_HOST=${DB_HOST:-host.docker.internal}
     restart: unless-stopped
 
 volumes:
