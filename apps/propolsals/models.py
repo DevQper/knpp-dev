@@ -23,7 +23,7 @@ class Proposal(models.Model):
     email = models.EmailField(max_length=255)
     file = models.FileField(upload_to='proposals/', null=True, blank=True)
     title = models.CharField(max_length=255)
-    type = models.CharField(max_length=255, choices=proposal_type, null=True, blank=True)
+    type = models.CharField(max_length=255, choices=proposal_type, default='other')
     status = models.CharField(max_length=255, choices=status, default='pending')
     description = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
