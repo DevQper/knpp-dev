@@ -7,7 +7,7 @@ class ProposalSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Proposal
-        fields = ['id', 'proposed_by', 'phone_number', 'email', 'file', 'title', 
+        fields = ['id', 'proposed_by', 'phone_number', 'email', 'file', 'title', 'type', 'status',
                   'description', 'created_at', 'updated_at']
         read_only_fields = ['created_at', 'updated_at']
 
@@ -17,5 +17,10 @@ class ProposalCreateUpdateSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Proposal
-        fields = ['proposed_by', 'phone_number', 'email', 'file', 'title', 'description', 'type']
+        fields = ['proposed_by', 'phone_number', 'email', 'file', 'title', 'description', 'type', 'status']
+
+    def create(self, validated_data):
+        # Ensure newly created proposals always start in pending status
+        validated_data['status'] = 'pending'
+        return super().create(validated_data)
 

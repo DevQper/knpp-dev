@@ -10,6 +10,13 @@ proposal_type = [
     ('other', 'Other'),
 ]
 
+status = [
+    ('pending', 'Pending'),
+    ('approved', 'Approved'),
+    ('rejected', 'Rejected'),
+    ('completed', 'Completed'),
+]
+
 class Proposal(models.Model):
     proposed_by = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=12)
@@ -17,6 +24,7 @@ class Proposal(models.Model):
     file = models.FileField(upload_to='proposals/', null=True, blank=True)
     title = models.CharField(max_length=255)
     type = models.CharField(max_length=255, choices=proposal_type, null=True, blank=True)
+    status = models.CharField(max_length=255, choices=status, default='pending')
     description = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
