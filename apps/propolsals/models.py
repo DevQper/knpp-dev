@@ -15,6 +15,7 @@ status = [
     ('approved', 'Approved'),
     ('rejected', 'Rejected'),
     ('completed', 'Completed'),
+    ('pilot', 'Pilot'),
 ]
 
 class Proposal(models.Model):
